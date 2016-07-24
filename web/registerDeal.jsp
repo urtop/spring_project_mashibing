@@ -31,5 +31,6 @@
     } catch (SQLException e) {
         e.printStackTrace();
     }
+
     response.sendRedirect("registerSuccess.jsp");
 %>
