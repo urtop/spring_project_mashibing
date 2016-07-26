@@ -2,11 +2,15 @@ package com.bjsxt.registeration.model;
 
 import com.bjsxt.registeration.service.UserManager;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import java.sql.SQLException;
 
 /**
  * Created by Mark on 2016/7/24.
  */
+@Entity
 public class User {
     public String getUsername() {
         return username;
@@ -24,6 +28,8 @@ public class User {
         this.password = password;
     }
 
+    @Id
+    @GeneratedValue
     public int getId() {
         return id;
     }

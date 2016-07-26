@@ -16,7 +16,9 @@ public class UserManager {
         Session session = sessionFactory.getCurrentSession();
         session.beginTransaction();
         Long count = (Long)    session.createQuery("select count (*) from User u where u.username = :username").setString("username",u.getUsername()).uniqueResult();
-
+        session.getTransaction().commit();
+        if(count>0) return true;
+        return false;
 
 //        try {
 //            Class.forName("com.mysql.jdbc.Driver");
@@ -47,18 +49,22 @@ public class UserManager {
 //        if (count > 0) {
 //            return true;
 //        }
-        return false;
     }
 
     public void add(User user) throws SQLException {
 
-        Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3307/spring", "root", "");
-        String sql = "INSERT INTO user VALUES(NULL,?,?)";
-        PreparedStatement ps = conn.prepareStatement(sql);
-        ps.setString(1, user.getUsername());
-        ps.setString(2, user.getPassword());
-        ps.executeUpdate();
-        ps.close();
-        conn.close();
+        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+        Session session = sessionFactory.getCurrentSession();
+        session.beginTransaction();
+        session.save(user);
+        session.getTransaction().commit();
+//        Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3307/spring", "root", "");
+//        String sql = "INSERT INTO user VALUES(NULL,?,?)";
+//        PreparedStatement ps = conn.prepareStatement(sql);
+//        ps.setString(1, user.getUsername());
+//        ps.setString(2, user.getPassword());
+//        ps.executeUpdate();
+//        ps.close();
+//        conn.close();
     }
 }
