@@ -16,7 +16,7 @@ public class UserManagerTest {
         User user = new User();
         user.setUsername("aaa");
         boolean exists = userManager.exists(user);
-        Assert.assertEquals(true,exists);
+        Assert.assertEquals(true, exists);
     }
 
     @Test
