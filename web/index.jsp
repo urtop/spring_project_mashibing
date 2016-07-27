@@ -13,7 +13,7 @@
     <meta http-equiv="cache-control" content="no-cache">
 </head>
 <body>
-<form method="post" action="registerDeal.jsp">
+<form method="post" action="user.action">
     Name:<input type="text" name="username">
     Pwd:<input type="password" name="password">
     <input type="submit" />
