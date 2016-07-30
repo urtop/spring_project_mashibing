@@ -4,12 +4,17 @@ import com.bjsxt.registeration.dao.UserDao;
 import com.bjsxt.registeration.dao.impl.UserDaoImpl;
 import com.bjsxt.registeration.model.User;
 import com.bjsxt.registeration.service.UserManager;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+import javax.annotation.Resource;
 import java.sql.SQLException;
 
 /**
  * Created by Mark on 2016/7/24.
  */
+
+@Component
 public class UserManagerImpl implements UserManager {
     private UserDao userDao = new UserDaoImpl();
 
@@ -25,6 +30,7 @@ public class UserManagerImpl implements UserManager {
         return userDao;
     }
 
+    @Autowired
     public void setUserDao(UserDao userDao) {
         this.userDao = userDao;
     }

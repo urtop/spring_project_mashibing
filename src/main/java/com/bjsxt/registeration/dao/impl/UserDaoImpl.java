@@ -2,31 +2,39 @@ package com.bjsxt.registeration.dao.impl;
 
 import com.bjsxt.registeration.dao.UserDao;
 import com.bjsxt.registeration.model.User;
-import com.bjsxt.registeration.util.HibernateUtil;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
+import org.springframework.orm.hibernate3.HibernateTemplate;
+import org.springframework.stereotype.Component;
+
+import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * Created by  Mark L Tao on 2016/7/27 15:49.
  */
-public class UserDaoImpl implements UserDao{
+
+@Component
+public class UserDaoImpl implements UserDao {
+    private HibernateTemplate hibernateTemplate;
 
     public void save(User user) {
-        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
-        Session session = sessionFactory.getCurrentSession();
-        session.beginTransaction();
-        session.save(user);
-        session.getTransaction().commit();
+        hibernateTemplate.save(user);
     }
 
     public boolean checkUserExistWithName(String username) {
-        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
-        Session session = sessionFactory.getCurrentSession();
-        session.beginTransaction();
-        Long count = (Long) session.createQuery("select count (*) from User u where u.username = :username").setString("username", username).uniqueResult();
-        session.getTransaction().commit();
-        if (count > 0) return true;
+        List<User> users = hibernateTemplate.find("from User u where u.username ='" + username + "'");
+        if (users != null && users.size() > 0) {
+            return true;
+        }
         return false;
 
+    }
+
+    public HibernateTemplate getHibernateTemplate() {
+        return hibernateTemplate;
+    }
+
+    @Resource
+    public void setHibernateTemplate(HibernateTemplate hibernateTemplate) {
+        this.hibernateTemplate = hibernateTemplate;
     }
 }
