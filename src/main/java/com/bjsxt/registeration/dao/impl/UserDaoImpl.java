@@ -29,6 +29,10 @@ public class UserDaoImpl implements UserDao {
 
     }
 
+    public List<User> getUsers() {
+        return  (List<User>)  this.hibernateTemplate.find("from User");
+    }
+
     public HibernateTemplate getHibernateTemplate() {
         return hibernateTemplate;
     }

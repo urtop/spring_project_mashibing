@@ -5,10 +5,11 @@
         "http://struts.apache.org/dtds/struts-2.1.7.dtd">
 
 <struts>
-    <package name="com.bjsxt.registeration"  extends="struts-default">
-        <action name="user" class="com.bjsxt.registeration.action.UserAction" >
+    <package name="com.bjsxt.registeration" extends="struts-default">
+        <action name="user" class="com.bjsxt.registeration.action.UserAction">
             <result name="success">registerSuccess.jsp</result>
             <result name="failure">registerFail.jsp</result>
+            <result name="list">userlist.jsp</result>
         </action>
     </package>
 </struts>

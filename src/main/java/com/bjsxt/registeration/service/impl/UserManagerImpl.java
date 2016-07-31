@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
 import java.sql.SQLException;
+import java.util.List;
 
 /**
  * Created by Mark on 2016/7/24.
@@ -24,6 +25,10 @@ public class UserManagerImpl implements UserManager {
 
     public void add(User user) throws SQLException {
         userDao.save(user);
+    }
+
+    public List<User> getUsers() {
+        return userDao.getUsers();
     }
 
     public UserDao getUserDao() {
