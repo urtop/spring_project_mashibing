@@ -2,6 +2,10 @@ package com.bjsxt.registeration.action;
 
 import org.junit.Test;
 
+import java.sql.Time;
+import java.util.Calendar;
+import java.util.Random;
+
 import static org.junit.Assert.*;
 
 /**
@@ -11,7 +15,7 @@ public class UserActionTest {
     @Test
     public void execute() throws Exception {
         UserAction userAction = new UserAction();
-        userAction.setUsername("new2");
+        userAction.setUsername(java.util.UUID.randomUUID().toString().substring(10));
         userAction.setPassword("newpp");
         String ret = userAction.execute();
         assertEquals("success", ret);

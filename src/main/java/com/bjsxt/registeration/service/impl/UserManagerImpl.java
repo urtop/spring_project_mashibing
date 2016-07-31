@@ -16,7 +16,7 @@ import java.sql.SQLException;
 
 @Component
 public class UserManagerImpl implements UserManager {
-    private UserDao userDao = new UserDaoImpl();
+    private UserDao userDao;
 
     public boolean exists(User u) throws SQLException {
         return userDao.checkUserExistWithName(u.getUsername());
