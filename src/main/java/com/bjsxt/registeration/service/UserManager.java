@@ -13,5 +13,5 @@ public interface UserManager {
 
     void add(User user) throws SQLException;
     public List<User> getUsers();
-
+    public  User loadById(int id);
 }

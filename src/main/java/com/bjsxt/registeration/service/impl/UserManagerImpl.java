@@ -31,6 +31,10 @@ public class UserManagerImpl implements UserManager {
         return userDao.getUsers();
     }
 
+    public User loadById(int id) {
+        return userDao.loadById(id);
+    }
+
     public UserDao getUserDao() {
         return userDao;
     }

@@ -6,10 +6,11 @@
 
 <struts>
     <package name="com.bjsxt.registeration" extends="struts-default">
-        <action name="user" class="com.bjsxt.registeration.action.UserAction">
+        <action name="u" class="com.bjsxt.registeration.action.UserAction">
             <result name="success">registerSuccess.jsp</result>
             <result name="failure">registerFail.jsp</result>
             <result name="list">userlist.jsp</result>
+            <result name="load">user.jsp</result>
         </action>
     </package>
 </struts>

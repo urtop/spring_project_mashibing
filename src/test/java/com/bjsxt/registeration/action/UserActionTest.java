@@ -35,4 +35,16 @@ public class UserActionTest {
         Assert.assertTrue(userAction.getUsers().size()>0);
 
     }
+
+    @Test
+    public void testLoad() throws Exception{
+
+        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("beans.xml");
+        UserAction userAction = (UserAction) applicationContext.getBean("user");
+        UserRegisterInfo info = new UserRegisterInfo();
+        info.setId(1);
+        userAction.load();
+        Assert.assertTrue(userAction.getUser()!=null);
+
+    }
 }

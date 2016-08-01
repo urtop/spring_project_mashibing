@@ -33,6 +33,10 @@ public class UserDaoImpl implements UserDao {
         return  (List<User>)  this.hibernateTemplate.find("from User");
     }
 
+    public User loadById(int id) {
+        return (User) hibernateTemplate.load(User.class, id);
+    }
+
     public HibernateTemplate getHibernateTemplate() {
         return hibernateTemplate;
     }

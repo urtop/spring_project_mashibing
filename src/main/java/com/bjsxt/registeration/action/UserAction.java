@@ -18,13 +18,14 @@ import java.util.List;
 /**
  * Created by  Mark L Tao on 2016/7/27 17:58.
  */
-@Component("user")
+//@Component("u")
 @Scope("prototype")
 public class UserAction extends ActionSupport implements ModelDriven {
     private String username;
     private String password;
     private UserManager userManager;
     private List<User> users;
+    private  User user;
     private UserRegisterInfo userRegisterInfo = new UserRegisterInfo();
 
     public List<User> getUsers() {
@@ -85,8 +86,21 @@ public class UserAction extends ActionSupport implements ModelDriven {
         return "list";
     }
 
+    public  String load(){
+        this.user = this.userManager.loadById(userRegisterInfo.getId());
+        return "load";
+    }
+
 
     public Object getModel() {
         return userRegisterInfo;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

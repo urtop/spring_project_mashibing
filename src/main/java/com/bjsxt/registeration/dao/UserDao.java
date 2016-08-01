@@ -11,5 +11,6 @@ public interface UserDao {
     public void save(User user);
     public boolean checkUserExistWithName(String username);
     public  List<User> getUsers();
+    public User loadById(int id);
 
 }
