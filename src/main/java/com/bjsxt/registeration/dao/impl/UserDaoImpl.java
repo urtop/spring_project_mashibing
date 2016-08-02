@@ -26,7 +26,6 @@ public class UserDaoImpl implements UserDao {
             return true;
         }
         return false;
-
     }
 
     public List<User> getUsers() {
