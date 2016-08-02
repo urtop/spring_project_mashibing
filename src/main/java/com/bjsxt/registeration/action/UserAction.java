@@ -18,8 +18,7 @@ import java.util.List;
 /**
  * Created by  Mark L Tao on 2016/7/27 17:58.
  */
-//@Component("u")
-@Scope("prototype")
+
 public class UserAction extends ActionSupport implements ModelDriven {
     private String username;
     private String password;
@@ -27,6 +26,12 @@ public class UserAction extends ActionSupport implements ModelDriven {
     private List<User> users;
     private  User user;
     private UserRegisterInfo userRegisterInfo = new UserRegisterInfo();
+
+    public  UserAction(){
+
+        System.out.println("new......");
+
+    }
 
     public List<User> getUsers() {
         return users;
