@@ -15,10 +15,11 @@ import org.springframework.stereotype.Component;
 import javax.annotation.Resource;
 import java.util.List;
 
-/**
- * Created by  Mark L Tao on 2016/7/27 17:58.
+/** * Created by  Mark L Tao on 2016/7/27 17:58.
  */
 
+@Component("u")
+@Scope("prototype")
 public class UserAction extends ActionSupport implements ModelDriven {
     private String username;
     private String password;
